@@ -26,33 +26,35 @@ const tabContainer = (categorys) => {
 
 const showCardBtn = async (id) => {
     const cardContainer = document.getElementById('card-container');
+    const drawingContainer = document.getElementById('drawing');
     cardContainer.textContent = '';
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
-    // console.log(data.data);
+    console.log(data);
     const card = data.data;
+    if(card.length === 0){
+        const div = document.createElement('div');
+        div.innerHTML =`
+            <div class="w-[400px] m-auto mt-8">
+                <div class="flex justify-center mb-3"><img src="image/Icon.png" /></div>
+                <p class="text-3xl font-bold text-center">Oops!! Sorry, There is no content here</p>
+            </div>
+
+        `;
+        drawingContainer.appendChild(div);
+
+    }
     card.forEach(element => {
         console.log(element);
         const div = document.createElement('div');
         div.classList = "p-4";
         const postDateInSecText = element.others.posted_date;
-        // console.log(postDateInSecText);
-        if (!!postDateInSecText == true) {
-            console.log(postDateInSecText);
-            const hour = Math.floor(postDateInSecText/3600);
-            const secIntoMin = postDateInSecText%3600;
-            const min = Math.floor(secIntoMin/60);
-            console.log(hour);
-            console.log(min);
-            const time = document.getElementById('time');
-            time.innerText = `${hour} ${min}`;
-        }
-        else {
-            console.log("hello vai");
-        }
+        const vari = document.getElementById('verified');
+
         div.innerHTML = `
             <img class="rounded-lg w-[330px] h-[200px]" src="${element.thumbnail}" alt="Shoes" />
-            <p>${postDateInSecText}</p>
+           
+            <p class="bg-black text-white max-w-[200px] absolute px-2 py-1 rounded-lg ml-[130px] mt-[-50px]">${(!!postDateInSecText == true) ? Math.floor(postDateInSecText / 3600) : ''} hrs ${(!!postDateInSecText == true) ? Math.floor((postDateInSecText % 3600) / 60) : ''} min ago</p>
             <div class="flex gap-3 my-5">
                 <div>
                     <img class="w-10 h-10 rounded-[50%]" src=${element.authors[0]?.profile_picture} />
@@ -62,7 +64,11 @@ const showCardBtn = async (id) => {
                     <h2 class="card-title font-bold">${element.title}</h2>
                     <div class="flex gap-2 mt-2 mb-2">
                     <p>${element.authors[0]?.profile_name}</p>
-                    <p>${(element.authors[0]?.verified) ? "hello" : "no hello"}</p>
+                    
+                    <img class="" id="verified" src="image/fi_10629607.png" alt="">
+                    <p></p>
+
+
                     </div>
                     <p>${element.others?.views} views</p>
                     
@@ -81,6 +87,11 @@ const showCardBtn = async (id) => {
 }
 
 const categoryBtn = (id) => {
+
+}
+
+const blogBtn = ()=>{
+    window.location.href = "http://127.0.0.1:5500/blog.html";
 
 }
 
