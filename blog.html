@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-    <h1>Welcome to the blog page</h1>
+<body class="text-center text-black max-w-3xl m-auto mt-[100px]">
+    <h1 class="text-5xl mb-5">Blog</h1>
+    <hr>
+    <div class="text-left mt-5">
+        <div class="collapse collapse-arrow bg-base-200">
+            <input type="radio" name="my-accordion-2" checked="checked" /> 
+            <div class="collapse-title text-xl font-medium">
+                Discuss the scope of var, let, and const
+            </div>
+            <div class="collapse-content"> 
+              <p>var declared as a global variable, whereas let and const are declared as block variables that are not accessible outside the block. var can be hoistadable. We can reassign var and let variable but const can not be reassigned. let and const are not redeclarable but we can redeclare var.</p>
+            </div>
+          </div>
+          <div class="collapse collapse-arrow bg-base-200">
+            <input type="radio" name="my-accordion-2" /> 
+            <div class="collapse-title text-xl font-medium">
+                Tell us the use cases of null and undefined
+            </div>
+            <div class="collapse-content"> 
+              <p>When a variable is declared but not assigned any value, the variable by default is assigned a value of undefined. null is an object. It can be assigned to a variable as a representation of no value. When you do not know the value initially you can assign null to a variable  </p>
+            </div>
+          </div>
+          <div class="collapse collapse-arrow bg-base-200">
+            <input type="radio" name="my-accordion-2" /> 
+            <div class="collapse-title text-xl font-medium">
+                What do you mean by REST API?
+            </div>
+            <div class="collapse-content"> 
+              <p>Representational State Transfer (REST) is an architectural style that defines a set of constraints to be used for creating web services. REST API is a way of accessing web services in a simple and flexible way without having any processing.All communication done through REST API uses only HTTP request. </p>
+            </div>
+          </div>
+    </div>
+    
 </body>
 </html>

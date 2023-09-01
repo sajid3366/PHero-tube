@@ -22,6 +22,7 @@ const tabContainer = (categorys) => {
     })
 }
 
+
 const showCardBtn = async (id) => {
     const cardContainer = document.getElementById('card-container');
     const drawingContainer = document.getElementById('drawing');
@@ -45,8 +46,17 @@ const showCardBtn = async (id) => {
 
     }
 
+
+    const viewArry = [];
     card.forEach(element => {
-        console.log(element);
+        // console.log(element);
+        const views = element.others.views;
+        // console.log(views);
+        
+        const newViewArray = viewArry.push(views);
+        // console.log(viewArry);
+
+
         const div = document.createElement('div');
         div.classList = "p-4";
         const postDateInSecText = element.others.posted_date;
@@ -78,20 +88,26 @@ const showCardBtn = async (id) => {
     
         `;
         cardContainer.appendChild(div)
-        // categoryBtn(id);
+        sortBtn(viewArry)
 
 
     })
+    
 
 
 }
 
-// const categoryBtn = (id) => {
+const sortBtn = (views) => {
+    // const viewArry = views.map();
+    console.log(views);
+    views.sort();
 
-// }
+
+}
 
 const blogBtn = () => {
-    window.location.href = "http://127.0.0.1:5500/blog.html";
+    // window.location.href = "http://127.0.0.1:5500/blog.html";
+    window.open("http://127.0.0.1:5500/blog.html", "_blank");
 
 }
 
