@@ -23,6 +23,7 @@ const tabContainer = (categorys) => {
 }
 
 
+
 const showCardBtn = async (id) => {
     const cardContainer = document.getElementById('card-container');
     const drawingContainer = document.getElementById('drawing');
@@ -46,15 +47,18 @@ const showCardBtn = async (id) => {
 
     }
 
+    const viewArry = [];
 
-    // const viewArry = [];
     card.forEach(element => {
         // console.log(element);
         const views = element.others.views;
+        const viewNumber = parseFloat(views);
+        const newViewArray = viewArry.push(viewNumber);
         // console.log(views);
-        
-        // const newViewArray = viewArry.push(views);
+
+
         // console.log(viewArry);
+
 
 
         const div = document.createElement('div');
@@ -64,7 +68,7 @@ const showCardBtn = async (id) => {
 
         div.innerHTML = `
             <img class="rounded-lg w-[400px] lg:w-[330px] h-[200px]" src="${element.thumbnail}" alt="Shoes" />
-            <p>${(!!postDateInSecText == true)? `<p class=" bg-black text-white max-w-[200px] absolute px-2 py-1 rounded-lg ml-[230px] mt-[-50px] md:ml-[30px] lg:ml-[130px] lg:mt-[-50px]">${(!!postDateInSecText == true) ? Math.floor(postDateInSecText / 3600) : ''} hrs${(!!postDateInSecText == true) ? Math.floor((postDateInSecText % 3600) / 60) : ''} min ago</p>`: ''}</p>
+            <p>${(!!postDateInSecText == true) ? `<p class=" bg-black text-white max-w-[200px] absolute px-2 py-1 rounded-lg ml-[230px] mt-[-50px] md:ml-[30px] lg:ml-[130px] lg:mt-[-50px]">${(!!postDateInSecText == true) ? Math.floor(postDateInSecText / 3600) : ''} hrs${(!!postDateInSecText == true) ? Math.floor((postDateInSecText % 3600) / 60) : ''} min ago</p>` : ''}</p>
             
             <div class="flex gap-3 my-5">
                 <div>
@@ -76,8 +80,8 @@ const showCardBtn = async (id) => {
                     <div class="flex gap-2 mt-2 mb-2">
                     <p>${element.authors[0]?.profile_name}</p>
                     
-                    <p>${(element.authors[0]?.verified == true)? `    <img src="image/fi_10629607.png" alt="">
-                    `:'' }</p>
+                    <p>${(element.authors[0]?.verified == true) ? `    <img src="image/fi_10629607.png" alt="">
+                    `: ''}</p>
                     
                     </div>
                     <p>${element.others?.views} views</p>
@@ -88,26 +92,28 @@ const showCardBtn = async (id) => {
     
         `;
         cardContainer.appendChild(div)
-        // sortBtn(viewArry)
-
+        sorting(viewArry)
 
     })
+
+
+}
+
+const sorting = (views) => {
+    // console.log(views);    
+    const decendingArray = views.sort((a, b) => a - b).reverse();;
+    console.log(decendingArray);
     
-
-
 }
 
-const sortBtn = (views) => {
-    // const viewArry = views.map();
-    console.log(views);
-    views.sort();
-
-
+const sortBtn =()=>{
+    console.log('hello vai');
 }
+
 
 const blogBtn = () => {
-    // window.location.href = "http://127.0.0.1:5500/blog.html";
-    window.open("http://127.0.0.1:5500/blog.html", "_blank");
+    // window.location.href = "./blog.html";
+    window.open("./blog.html", "_blank");
 
 }
 
