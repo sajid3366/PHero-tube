@@ -14,7 +14,7 @@ const tabContainer = (categorys) => {
         const div = document.createElement('div');
 
         div.innerHTML = `
-        <button onclick="showCardBtn('${category.category_id}')" class="btn text-xl ml-4 px-8 py-1 capitalize bg-gray-300">${category.category}</button>
+        <button onclick="showCardBtn('${category.category_id}')" class="btn  w-[80px] lg:w-full text-lg lg:text-xl ml-4 px-8 py-1 capitalize bg-gray-300">${category.category}</button>
 
         `;
         tabContainer.appendChild(div);
@@ -47,13 +47,13 @@ const showCardBtn = async (id) => {
     }
 
 
-    const viewArry = [];
+    // const viewArry = [];
     card.forEach(element => {
         // console.log(element);
         const views = element.others.views;
         // console.log(views);
         
-        const newViewArray = viewArry.push(views);
+        // const newViewArray = viewArry.push(views);
         // console.log(viewArry);
 
 
@@ -63,8 +63,8 @@ const showCardBtn = async (id) => {
 
 
         div.innerHTML = `
-            <img class="rounded-lg w-[330px] h-[200px]" src="${element.thumbnail}" alt="Shoes" />
-            <p>${(!!postDateInSecText == true)? `<p class=" bg-black text-white max-w-[200px] absolute px-2 py-1 rounded-lg ml-[130px] mt-[-50px]">${(!!postDateInSecText == true) ? Math.floor(postDateInSecText / 3600) : ''} hrs${(!!postDateInSecText == true) ? Math.floor((postDateInSecText % 3600) / 60) : ''} min ago</p>`: ''}</p>
+            <img class="rounded-lg w-[400px] lg:w-[330px] h-[200px]" src="${element.thumbnail}" alt="Shoes" />
+            <p>${(!!postDateInSecText == true)? `<p class=" bg-black text-white max-w-[200px] absolute px-2 py-1 rounded-lg ml-[230px] mt-[-50px] md:ml-[30px] lg:ml-[130px] lg:mt-[-50px]">${(!!postDateInSecText == true) ? Math.floor(postDateInSecText / 3600) : ''} hrs${(!!postDateInSecText == true) ? Math.floor((postDateInSecText % 3600) / 60) : ''} min ago</p>`: ''}</p>
             
             <div class="flex gap-3 my-5">
                 <div>
@@ -88,7 +88,7 @@ const showCardBtn = async (id) => {
     
         `;
         cardContainer.appendChild(div)
-        sortBtn(viewArry)
+        // sortBtn(viewArry)
 
 
     })
