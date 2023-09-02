@@ -2,14 +2,12 @@ const loadData = async (Id = "1000") => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
     const data = await res.json();
     const categorys = data.data;
-    // console.log(data);
     tabContainer(categorys);
     showCardBtn(Id)
 }
 
 const tabContainer = (categorys) => {
     const tabContainer = document.getElementById('category-container');
-    // console.log(categorys);
     categorys.forEach(category => {
         const div = document.createElement('div');
 
@@ -23,17 +21,16 @@ const tabContainer = (categorys) => {
 }
 
 
-
 const showCardBtn = async (id) => {
     const cardContainer = document.getElementById('card-container');
     const drawingContainer = document.getElementById('drawing');
-
+    
     cardContainer.textContent = '';
     drawingContainer.textContent = '';
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
-    // console.log(data);
     const card = data.data;
+
     if (card.length === 0) {
         const div = document.createElement('div');
         div.innerHTML = `
@@ -47,24 +44,13 @@ const showCardBtn = async (id) => {
 
     }
 
-    const viewArry = [];
+    
 
     card.forEach(element => {
-        // console.log(element);
-        const views = element.others.views;
-        const viewNumber = parseFloat(views);
-        const newViewArray = viewArry.push(viewNumber);
-        // console.log(views);
-
-
-        // console.log(viewArry);
-
-
-
+    
         const div = document.createElement('div');
         div.classList = "p-4";
         const postDateInSecText = element.others.posted_date;
-
 
         div.innerHTML = `
             <img class="rounded-lg w-[400px] lg:w-[330px] h-[200px]" src="${element.thumbnail}" alt="Shoes" />
@@ -92,30 +78,15 @@ const showCardBtn = async (id) => {
     
         `;
         cardContainer.appendChild(div)
-        sorting(viewArry)
+        
 
     })
 
-
-}
-
-const sorting = (views) => {
-    // console.log(views);    
-    const decendingArray = views.sort((a, b) => a - b).reverse();;
-    console.log(decendingArray);
-    
-}
-
-const sortBtn =()=>{
-    console.log('hello vai');
 }
 
 
 const blogBtn = () => {
-    // window.location.href = "./blog.html";
     window.open("./blog.html", "_blank");
-
 }
-
 
 loadData();
